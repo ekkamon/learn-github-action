@@ -30,5 +30,8 @@ RUN yarn install --frozen-lockfile
 
 COPY --from=builder /app/dist ./dist
 
+RUN --mount=type=secret,id=KEY_NAME \
+   export KEY_NAME=$(cat /run/secrets/KEY_NAME)
+
 EXPOSE 3000
 CMD [ "yarn", "start:prod" ]
