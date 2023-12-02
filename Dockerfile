@@ -1,8 +1,5 @@
 FROM node:lts as builder
 
-RUN --mount=type=secret,id=KEY_NAME \
-  export KEY_NAME=$(cat /run/secrets/KEY_NAME)
-
 # Create app directory
 WORKDIR /app
 
